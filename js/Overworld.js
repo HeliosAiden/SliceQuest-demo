@@ -12,39 +12,17 @@ class OverWorld {
     };
     image.src = "/images/maps/DemoLower.png";
 
-    const x = 4;
-    const y = 6;
+    // Place some Game Objects
+    const hero = new GameObject({ x: 5, y: 6 });
+    const npc1 = new GameObject({
+      x: 7,
+      y: 9,
+      src: "/images/characters/people/npc1.png",
+    });
 
-    const shadow = new Image();
-    shadow.onload = () => {
-      this.ctx.drawImage(
-        shadow,
-        0, // X cordinate
-        0, // Y cordinate
-        32, // X cut cordinate
-        32, // Y cut cordinate
-        x * 16 - 8, // X move cordinate
-        y * 16 - 16, // Y move cordinate
-        32, // X scale cordinate
-        32 // Y scale cordinate
-      );
-    };
-    shadow.src = "/images/characters/shadow.png";
-
-    const hero = new Image();
-    hero.onload = () => {
-      this.ctx.drawImage(
-        hero,
-        0, // X cordinate
-        0, // Y cordinate
-        32, // X cut cordinate
-        32, // Y cut cordinate
-        x * 16 - 8, // X move cordinate
-        y * 16 - 16, // Y move cordinate
-        32, // X scale cordinate
-        32 // Y scale cordinate
-      );
-    };
-    hero.src = "/images/characters/people/hero.png";
+    setTimeout(() => {
+      hero.sprite.draw(this.ctx);
+      npc1.sprite.draw(this.ctx);
+    }, 200);
   }
 }
