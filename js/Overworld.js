@@ -33,7 +33,7 @@ class OverWorld {
   }
 
   init() {
-    this.map = new OverworldMap(window.OverworldMap.Kitchen);
+    this.map = new OverworldMap(window.OverworldMap.DemoRoom);
     this.directionInput = new DirectionInput();
     this.directionInput.init();
     // this.directionInput.direction;
