@@ -26,9 +26,7 @@ class GameObject {
   update() {}
 
   async doBehaviorEvent(map) {
-    if (this.isCutscenePlaying || this.behaviorLoop.length === 0) {
-      return;
-    }
+    if (map.isCutscenePlaying || this.behaviorLoop.length === 0) return;
 
     // Setting up our event with relevant info
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
