@@ -25,7 +25,7 @@ class GameObject {
 
   update() {}
 
-  async doBehaviorEvent() {
+  async doBehaviorEvent(map) {
     if (this.isCutscenePlaying || this.behaviorLoop.length === 0) {
       return;
     }

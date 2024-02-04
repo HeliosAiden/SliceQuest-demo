@@ -26,9 +26,11 @@ class OverWorld {
       this.map.drawLowerImage(this.ctx, cameraPerson);
 
       // Draw Game Objects
-      Object.values(this.map.gameObjects).forEach((object) => {
-        object.sprite.draw(this.ctx, cameraPerson);
-      });
+      Object.values(this.map.gameObjects)
+        .sort((a, b) => a.y - b.y)
+        .forEach((object) => {
+          object.sprite.draw(this.ctx, cameraPerson);
+        });
 
       // Draw upper layer
       this.map.drawUpperImage(this.ctx, cameraPerson);
@@ -42,7 +44,7 @@ class OverWorld {
 
   init() {
     this.map = new OverworldMap(window.OverworldMap.DemoRoom);
-    this.map.mountObjects()
+    this.map.mountObjects();
     this.directionInput = new DirectionInput();
     this.directionInput.init();
     // this.directionInput.direction;

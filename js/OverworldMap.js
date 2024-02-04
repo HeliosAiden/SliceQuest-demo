@@ -72,7 +72,7 @@ window.OverworldMap = {
         src: "/images/characters/people/npc1.png",
         behaviorLoop: [
           { type: "walk", direction: "left" },
-          { type: "walk", direction: "down" },
+          { type: "walk", direction: "up" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "down" },
         ],
@@ -83,9 +83,9 @@ window.OverworldMap = {
         src: "/images/characters/people/npc2.png",
         behaviorLoop: [
           { type: "walk", direction: "left" },
-          { type: "stand", direction: "up", time: 2000 },
-          { type: "walk", direction: "up" },
+          { type: "stand", direction: "down", time: 1000 },
           { type: "walk", direction: "down" },
+          { type: "walk", direction: "up" },
           { type: "walk", direction: "right" },
         ],
       }),
