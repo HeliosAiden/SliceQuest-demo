@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+:root {
+  --border-color: #291d4d;
+  --dialog-background: #fff3b4;
+  --menu-background: #ffe8d2;
+  --menu-font-color: #3a160d;
+  --menu-selected-background: #7fc2ff;
+}
+
 body {
   background-color: #333;
   padding: 0;
