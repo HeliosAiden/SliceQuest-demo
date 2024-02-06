@@ -62,6 +62,17 @@ class OverworldMap {
     );
   }
 
+  checkForActionCutscene() {
+    const hero = this.gameObjects["hero"];
+    const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+    const match = Object.values(this.gameObjects).find((object) => {
+      return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`;
+    });
+    if (!this.isCutscenePlaying && match && match.talking.length) {
+      this.startCutscene(match.talking[0].events);
+    }
+  }
+
   addWall(x, y) {
     this.walls[`${x},${y}`] = true;
   }
@@ -90,10 +101,34 @@ window.OverworldMap = {
         y: utils.widthGrid(9),
         src: "/images/characters/people/npc1.png",
         behaviorLoop: [
-          { type: "walk", direction: "left" },
-          { type: "walk", direction: "up" },
-          { type: "walk", direction: "right" },
-          { type: "walk", direction: "down" },
+          { type: "stand", direction: "left", time: 800 },
+          { type: "stand", direction: "up", time: 800 },
+          { type: "stand", direction: "right", time: 800 },
+          { type: "stand", direction: "down", time: 800 },
+        ],
+        talking: [
+          {
+            events: [
+              {
+                type: "textMessage",
+                text: "WHY HELLO THERE",
+                faceHero: "npc1",
+              },
+              {
+                type: "textMessage",
+                text: "I'M TALKING ABOUT SOMETHING ELSE!",
+              },
+              { who: "hero", type: "walk", direction: "up" },
+            ],
+          },
+          {
+            events: [
+              {
+                type: "textMessage",
+                text: "I'M TALKING ABOUT SOMETHING ELSE!",
+              },
+            ],
+          },
         ],
       }),
       npc2: new Person({

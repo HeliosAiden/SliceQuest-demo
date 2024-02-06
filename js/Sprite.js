@@ -54,7 +54,7 @@ class Sprite {
     this.animationFrameLimit = config.animationFrameLimit || 8;
     this.animationFrameProgress = this.animationFrameLimit;
     // Reference to the game object
-    this.gameObject = config.gameObject;
+    this.gameObjects = config.gameObjects;
   }
 
   get frame() {
@@ -85,8 +85,8 @@ class Sprite {
   }
 
   draw(ctx, cameraPerson) {
-    const x = this.gameObject.x - 7 + utils.widthGrid(10.5) - cameraPerson.x;
-    const y = this.gameObject.y - 18 + utils.widthGrid(6) - cameraPerson.y;
+    const x = this.gameObjects.x - 7 + utils.widthGrid(10.5) - cameraPerson.x;
+    const y = this.gameObjects.y - 18 + utils.widthGrid(6) - cameraPerson.y;
 
     const [frameX, frameY] = this.frame;
 

@@ -1,4 +1,4 @@
-class Person extends GameObject {
+class Person extends GameObjects {
   constructor(config) {
     super(config);
     this.movementProgressRemaining = 0;

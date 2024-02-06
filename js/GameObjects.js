@@ -1,4 +1,4 @@
-class GameObject {
+class GameObjects {
   constructor(config) {
     this.id = null;
     this.isMounted = false;
@@ -6,11 +6,13 @@ class GameObject {
     this.y = config.y || 0;
     this.direction = config.direction || "down";
     this.sprite = new Sprite({
-      gameObject: this,
+      gameObjects: this,
       src: config.src || "/images/characters/people/hero.png",
     });
     this.behaviorLoop = config.behaviorLoop || [];
     this.behaviorLoopIndex = 0;
+
+    this.talking = config.talking || [];
   }
 
   mount(map) {
