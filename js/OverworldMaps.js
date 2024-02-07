@@ -77,7 +77,6 @@ class OverworldMaps {
   checkForFootStepCutscene() {
     const hero = this.gameObjects["hero"];
     const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
-    console.log(match[0].events);
     if (!this.isCutscenePlaying && match) {
       this.startCutscene(match[0].events);
     }

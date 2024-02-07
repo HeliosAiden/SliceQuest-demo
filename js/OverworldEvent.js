@@ -59,14 +59,19 @@ class OverworldEvent {
     }
     const message = new TextMessage({
       text: this.event.text,
-      oncomplete: () => resolve(),
+      onComplete: () => resolve(),
     });
     message.init(document.querySelector(".game-container"));
   }
 
   changeMap(resolve) {
-    this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
-    resolve();
+    const sceneTransition = new SceneTransition();
+    sceneTransition.init(document.querySelector(".game-container"), () => {
+      this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
+      resolve();
+
+      sceneTransition.fadeOut();
+    });
   }
 
   init() {
