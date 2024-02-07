@@ -45,15 +45,29 @@ class OverWorld {
   bindActionInputs() {
     new KeyPressListener("Enter", () => {
       // Is there a person here to talk to ?
-      this.map.checkForActionCutscene()
+      this.map.checkForActionCutscene();
     });
   }
 
-  init() {
-    this.map = new OverworldMap(window.OverworldMap.DemoRoom);
-    this.map.mountObjects();
+  bindHeroPositionCheck() {
+    document.addEventListener("PersonWalkingComplete", (e) => {
+      if (e.detail.whoId == "hero") {
+        // Hero's position changed
+        this.map.checkForFootStepCutscene();
+      }
+    });
+  }
 
+  startMap(mapConfig) {
+    this.map = new OverworldMaps(mapConfig);
+    this.map.overworld = this;
+    this.map.mountObjects();
+  }
+
+  init() {
+    this.startMap(window.OverworldMaps.DemoRoom);
     this.bindActionInputs();
+    this.bindHeroPositionCheck();
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();

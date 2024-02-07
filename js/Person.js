@@ -55,11 +55,12 @@ class Person extends GameObjects {
       this.movementProgressRemaining = 16;
       this.updateSprite(state);
     }
+
     if (behavior.type === "stand") {
       this.isStanding = true;
       setTimeout(() => {
         utils.emitEvent("PersonStandComplete", { whoId: this.id });
-        this.isStanding = true;
+        this.isStanding = false;
       }, behavior.time);
     }
   }
